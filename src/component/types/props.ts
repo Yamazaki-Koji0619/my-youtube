@@ -12,6 +12,6 @@ export type keywordProps = {
         rows: number;
         value:　string
         type: string;
-        onChange: object;
+        onChange: (event: React.ChangeEvent<HTMLInputElement>) => void;
     }
 }

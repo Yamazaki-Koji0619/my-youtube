@@ -44,7 +44,7 @@ const Header = () => {
         <div className={classes.root}>
             <AppBar position="fixed" className={classes.menuBar}>
                 <ToolBar className={classes.toolBar}>
-                    <h2>もくもく会アプリ</h2>
+                    <h2>まだ未定アプリ</h2>
                     {isSignedIn && (
                         <div className={classes.iconButtons}>
                             <HeaderMenu handleDrawerToggle={handleDrawerToggle} />
