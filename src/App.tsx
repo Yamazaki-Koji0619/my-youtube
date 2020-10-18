@@ -1,15 +1,18 @@
 import * as React from 'react';
-import { Provider } from 'react-redux';
-import { buildTodoStore } from './redux/store';
-import Container from './redux/Container';
+import Header from './component/Header';
+import Router from './Router';
+import  "./assets/style.css";
 
 /* react-reduxのProviderでラッピングしたコンポーネントをレンダリング */
 class App extends React.Component {
   public render() {
     return (
-      <Provider store={buildTodoStore()}>
-        <Container/>
-      </Provider>
+      <>
+        <Header />
+        <main className="main">
+          <Router/>
+        </main>
+      </>
     );
   }
 }

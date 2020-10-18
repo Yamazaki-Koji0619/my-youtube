@@ -13,7 +13,8 @@ const useStyles = makeStyles({
     },
     menuBar: {
         backgroundColor: "#fff",
-        color: "#444"
+        color: "#444",
+        marginBottom: "150px"
     },
     toolBar: {
         margin: "0 auto",
