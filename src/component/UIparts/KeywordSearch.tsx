@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import TextField from '@material-ui/core/TextField';
-import { keywordProps } from '../types/props';
+import { keywordProps } from '../types/HeaderType';
 
 const TextInput: FC<keywordProps> = (props) => {
     return (

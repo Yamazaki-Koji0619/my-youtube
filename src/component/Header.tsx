@@ -19,7 +19,8 @@ const useStyles = makeStyles({
     toolBar: {
         margin: "0 auto",
         maxWidth: 1024,
-        width: "100%"
+        width: "100%",
+        height: "80px"
     },
     iconButtons: {
         margin: "0 0 0 auto"

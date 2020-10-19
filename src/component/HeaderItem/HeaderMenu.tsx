@@ -3,7 +3,7 @@ import IconButton from '@material-ui/core/IconButton';
 import SearchIcon from '@material-ui/icons/Search';
 import MenuIcon from '@material-ui/icons/Menu';
 import KeywordSearch from '../UIparts/KeywordSearch';
-import { headerProps } from '../types/props';
+import { headerProps } from '../types/HeaderType';
 
 const HeaderMenu: FC<headerProps> = (props) => {
 
