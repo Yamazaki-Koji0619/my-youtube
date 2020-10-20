@@ -1,12 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { randomIdDataType, aipDataType, aipVideoType } from './types/MainType';
+import { ChannelInfoPropsType, randomIdDataType, aipDataType, aipVideoType, VideoInfoTyoe } from './types/MainType';
 
 import { RootState } from '../store';
 import { decrementAction, incrementAction, resetAction } from '../store/counter/actions';
 
 const Counter: React.FC = () => {
 
+  const [firstItem, setFirstItem] = useState<ChannelInfoPropsType>([]);
+  const [secondItem, setSecondItem] = useState<ChannelInfoPropsType>([]);
+  const [thirdItem, setThirdItem] = useState<ChannelInfoPropsType>([]);
   const [randomIdData, setRandomIdData] = useState<randomIdDataType>([]); //channelDataからランダムに３つのオブジェクトをいれる
   const [apiDataList, setApiDataList] = useState<aipDataType>(); //apiから取得した情報を入れる
   const [apiVideoList, setApiVideoList] = useState<aipVideoType>(); //apiから取得した情報を入れる
@@ -20,6 +23,19 @@ const Counter: React.FC = () => {
       {id: 'UC3-1iYGHfR43q_b974vUNYg', genre: 'study', name: 'フェルミ研究所'},
       {id: 'UCFkncXKwLRtA2MFdXOv34yQ', genre: 'game', name: 'Nephrite'},
   ];
+
+  //ChannelAPIとSearchAPIの情報が一致しているものをまとめる関数
+  const checkMathcItem = (resultItems: any) => {
+    resultItems.map((item: any) => {
+        if(firstItem[0].snippet.title === item.snippet.channelTitle){
+            firstItem.push(item);
+        }else if(secondItem[0].snippet.title === item.snippet.channelTitle){
+            secondItem.push(item);
+        }else if(thirdItem[0].snippet.title === item.snippet.channelTitle){
+            thirdItem.push(item);
+        }
+    })
+  };
 
   useEffect(() => {
     //youtube_dataに入れるためのidをランダムに作成する
@@ -39,12 +55,15 @@ const Counter: React.FC = () => {
         `https://www.googleapis.com/youtube/v3/search?key=AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag&part=id,snippet&channelId=${list[1]}&maxResults=3&order=date`,
         `https://www.googleapis.com/youtube/v3/search?key=AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag&part=id,snippet&channelId=${list[2]}&maxResults=3&order=date`
     ];
-      
+
     //youtubeAPIから情報を取得する
     fetch(youtube_data).then(res => res.json())
         .then(result => {
             const items: aipDataType = result.items;
-            setApiDataList(items)
+            setApiDataList(items);
+            firstItem.push(result.items[0]);
+            secondItem.push(result.items[1]);
+            thirdItem.push(result.items[2]);
       });
 
     //youtubeAPIから動画の情報を取得する
@@ -53,13 +72,17 @@ const Counter: React.FC = () => {
         fetch(url).then(res => res.json())
             .then(result => {
                 items.push(result.items)
-                console.log(items);
+                checkMathcItem(result.items)
             })
         setApiVideoList(items);
     })
+
+    console.log(firstItem);
   },[]);
 
-  console.log(apiVideoList);
+  console.log(firstItem);
+  console.log(secondItem);
+  console.log(thirdItem);
 
   const currentCount = useSelector((state: RootState) => state.counter);
   const dispatch = useDispatch();
