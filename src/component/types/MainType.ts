@@ -1,38 +1,27 @@
-// MainPage.tsx
+// MainPage.tsx ChannelInfo.tsx VideoInfo.tsx
 export type randomIdDataType = {
     id: string;
     genre: string;
     name: string;
 }[];
 
-export type aipDataType = {
-    etag: string;
-    id: string;
-    kind: string;
-    snippet?: object;
-    statistics?: object
-}[];
-
-export type  aipVideoType = object[];
-// MainPage.tsx
-
-//ChannelInfo.tsx
-export type ChannelInfoPropsType = {
+export type ChannelInfoType = {
     kind: string;
     etag: string;
-    id: string;
+    id: string | object;
     snippet: { 
         title: string;
         description: string;
-        customUrl: string;
+        customUrl?: string;
         publishedAt: string;
         thumbnails: {
-        AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag: {
-            url: string;
-            width: number;
-            height: number
+            AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag: {
+                url: string;
+                width: number;
+                height: number
+            }
         }
-    }};
+    };
     statistics: {
         viewCount: number;
         subscriberCount: number;  // this value is rounded to three significant figures
@@ -40,17 +29,13 @@ export type ChannelInfoPropsType = {
         videoCount: number;
     };
 }[]
-//ChannelInfo.tsx
 
-//VideoInfo.tsx
-export type VideoInfoTyoe = {
+export type VideoInfoType = {
     kind: string,
     etag: string,
     id: {
       kind: string,
       videoId: string,
-      channelId: string,
-      playlistId: string
     },
     snippet: {
       publishedAt: string,
@@ -66,6 +51,7 @@ export type VideoInfoTyoe = {
       },
       channelTitle: string,
       liveBroadcastContent: string
-    }
+    },
+    statistics: any
 }[];
-//VideoInfo.tsx
+// MainPage.tsx ChannelInfo.tsx VideoInfo.tsx

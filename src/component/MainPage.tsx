@@ -1,18 +1,15 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ChannelInfoPropsType, randomIdDataType, aipDataType, aipVideoType, VideoInfoTyoe } from './types/MainType';
+import { ChannelInfoType, randomIdDataType, VideoInfoType } from './types/MainType';
 
 import { RootState } from '../store';
 import { decrementAction, incrementAction, resetAction } from '../store/counter/actions';
 
 const Counter: React.FC = () => {
 
-  const [firstItem, setFirstItem] = useState<ChannelInfoPropsType>([]);
-  const [secondItem, setSecondItem] = useState<ChannelInfoPropsType>([]);
-  const [thirdItem, setThirdItem] = useState<ChannelInfoPropsType>([]);
-  const [randomIdData, setRandomIdData] = useState<randomIdDataType>([]); //channelDataからランダムに３つのオブジェクトをいれる
-  const [apiDataList, setApiDataList] = useState<aipDataType>(); //apiから取得した情報を入れる
-  const [apiVideoList, setApiVideoList] = useState<aipVideoType>(); //apiから取得した情報を入れる
+  const [firstItem, setFirstItem] = useState<ChannelInfoType>([]);
+  const [secondItem, setSecondItem] = useState<ChannelInfoType>([]);
+  const [thirdItem, setThirdItem] = useState<ChannelInfoType>([]);
 
   const channelData: randomIdDataType = [
       {id: 'UC1uZYgOfncA-Gnk0GsLVK5A', genre: 'music', name: 'Unison Square Garden'},
@@ -25,8 +22,8 @@ const Counter: React.FC = () => {
   ];
 
   //ChannelAPIとSearchAPIの情報が一致しているものをまとめる関数
-  const checkMathcItem = (resultItems: any) => {
-    resultItems.map((item: any) => {
+  const checkMathcItem = (resultItems: VideoInfoType) => {
+    resultItems.map((item) => {
         if(firstItem[0].snippet.title === item.snippet.channelTitle){
             firstItem.push(item);
         }else if(secondItem[0].snippet.title === item.snippet.channelTitle){
@@ -40,14 +37,13 @@ const Counter: React.FC = () => {
   useEffect(() => {
     //youtube_dataに入れるためのidをランダムに作成する
     const result = [];
-    let list: string[] = [];
+    let list: string[] = [];//APIを叩くためのIdを保存する
     for(let i = 0; i < 3; i++){
         let randomIndex = Math.floor(Math.random() * channelData.length);
         result[i] = channelData[randomIndex];
         channelData.splice(randomIndex, 1);
         list = result.map(item => item.id);
     }
-    setRandomIdData(result);
     
     const youtube_data = `https://www.googleapis.com/youtube/v3/channels?key=AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag&part=snippet,statistics&id=${list[0]}&id=${list[1]}&id=${list[2]}`;
     const youtube_video = [
@@ -59,25 +55,18 @@ const Counter: React.FC = () => {
     //youtubeAPIから情報を取得する
     fetch(youtube_data).then(res => res.json())
         .then(result => {
-            const items: aipDataType = result.items;
-            setApiDataList(items);
             firstItem.push(result.items[0]);
             secondItem.push(result.items[1]);
             thirdItem.push(result.items[2]);
       });
 
     //youtubeAPIから動画の情報を取得する
-    const items: object[] = [];
     youtube_video.map(url => {
         fetch(url).then(res => res.json())
             .then(result => {
-                items.push(result.items)
                 checkMathcItem(result.items)
             })
-        setApiVideoList(items);
     })
-
-    console.log(firstItem);
   },[]);
 
   console.log(firstItem);

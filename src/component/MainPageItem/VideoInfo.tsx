@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { VideoInfoTyoe } from '../types/MainType';
+import { VideoInfoType } from '../types/MainType';
 
-const VideoInfo: FC<VideoInfoTyoe> = (props) => {
+const VideoInfo: FC<VideoInfoType> = (props) => {
 
     const VideoImage = {}
 
