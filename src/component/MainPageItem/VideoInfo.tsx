@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import { VideoInfoType } from '../types/MainType';
+import { VideoInfoPropsType } from '../types/MainType';
 
-const VideoInfo: FC<VideoInfoType> = (props) => {
+const VideoInfo: FC<VideoInfoPropsType> = (props) => {
+
+    console.log(props);
 
     const VideoImage = {}
 

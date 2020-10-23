@@ -1,15 +1,21 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ChannelInfoType, randomIdDataType, VideoInfoType } from './types/MainType';
+import { randomIdDataType, ChannelInfoType, VideoInfoType } from './types/MainType';
+import ChannelInfo from './MainPageItem/ChannelInfo';
+import VideoInfo from './MainPageItem/VideoInfo';
 
 import { RootState } from '../store';
 import { decrementAction, incrementAction, resetAction } from '../store/counter/actions';
 
 const Counter: React.FC = () => {
 
-  const [firstItem, setFirstItem] = useState<ChannelInfoType>([]);
-  const [secondItem, setSecondItem] = useState<ChannelInfoType>([]);
-  const [thirdItem, setThirdItem] = useState<ChannelInfoType>([]);
+  const [firstChanelItem, setFirstChanelItem] = useState<ChannelInfoType>([]);
+  const [secondChannelItem, setSecondChannelItem] = useState<ChannelInfoType>([]);
+  const [thirdChannelItem, setThirdChannelItem] = useState<ChannelInfoType>([]);
+
+  const [firstVideoItem, setFirstVideoItem] = useState<VideoInfoType>([]);
+  const [secondVideoItem, setSecondVideoItem] = useState<VideoInfoType>([]);
+  const [thirdVideoItem, setThirdVideoItem] = useState<VideoInfoType>([]);
 
   const channelData: randomIdDataType = [
       {id: 'UC1uZYgOfncA-Gnk0GsLVK5A', genre: 'music', name: 'Unison Square Garden'},
@@ -20,19 +26,6 @@ const Counter: React.FC = () => {
       {id: 'UC3-1iYGHfR43q_b974vUNYg', genre: 'study', name: 'フェルミ研究所'},
       {id: 'UCFkncXKwLRtA2MFdXOv34yQ', genre: 'game', name: 'Nephrite'},
   ];
-
-  //ChannelAPIとSearchAPIの情報が一致しているものをまとめる関数
-  const checkMathcItem = (resultItems: VideoInfoType) => {
-    resultItems.map((item) => {
-        if(firstItem[0].snippet.title === item.snippet.channelTitle){
-            firstItem.push(item);
-        }else if(secondItem[0].snippet.title === item.snippet.channelTitle){
-            secondItem.push(item);
-        }else if(thirdItem[0].snippet.title === item.snippet.channelTitle){
-            thirdItem.push(item);
-        }
-    })
-  };
 
   useEffect(() => {
     //youtube_dataに入れるためのidをランダムに作成する
@@ -53,25 +46,54 @@ const Counter: React.FC = () => {
     ];
 
     //youtubeAPIから情報を取得する
-    fetch(youtube_data).then(res => res.json())
-        .then(result => {
-            firstItem.push(result.items[0]);
-            secondItem.push(result.items[1]);
-            thirdItem.push(result.items[2]);
-      });
-
+    const ChannelData = async() => {
+        await fetch(youtube_data).then(res => res.json()).then(result => {
+            firstChanelItem.push(result.items[0]);
+            secondChannelItem.push(result.items[1]);
+            thirdChannelItem.push(result.items[2]);
+        });
+    }
+    
+    ChannelData();
+    
     //youtubeAPIから動画の情報を取得する
-    youtube_video.map(url => {
-        fetch(url).then(res => res.json())
-            .then(result => {
-                checkMathcItem(result.items)
+    const item01: VideoInfoType = [];
+    const item02: VideoInfoType = [];
+    const item03: VideoInfoType = [];
+    const VideoData = async() => {
+        await youtube_video.map(url => {
+            fetch(url).then(res => res.json()).then(result => {
+                //ChannelAPIとSearchAPIの情報が一致しているものをまとめる
+                result.items.map((item: any) => {
+                    if(firstChanelItem[0].snippet.title === item.snippet.channelTitle){
+                        item01.push(item);
+                        // setFirstVideoItem(item01);
+                    }else if(secondChannelItem[0].snippet.title === item.snippet.channelTitle){
+                        item02.push(item);
+                        // setSecondVideoItem(item02);
+                    }else if(thirdChannelItem[0].snippet.title === item.snippet.channelTitle){
+                        item03.push(item);
+                        // setThirdVideoItem(item03);
+                    }
+                })
             })
-    })
+        })
+        setFirstVideoItem(item01);
+        setSecondVideoItem(item02);
+        setThirdVideoItem(item03);
+    }
+
+    VideoData();
+
   },[]);
 
-  console.log(firstItem);
-  console.log(secondItem);
-  console.log(thirdItem);
+//   console.log(firstChanelItem);
+//   console.log(secondChannelItem);
+//   console.log(thirdChannelItem);
+//   console.log(firstVideoItem);
+//   console.log(secondVideoItem);
+//   console.log(thirdVideoItem);
+
 
   const currentCount = useSelector((state: RootState) => state.counter);
   const dispatch = useDispatch();
@@ -85,6 +107,8 @@ const Counter: React.FC = () => {
       <button onClick={handleIncrement}>Up</button>
       <button onClick={handleDecrement}>Down</button>
       <button onClick={handleReset}>Reset</button>
+      <ChannelInfo channel={firstChanelItem} />
+      <VideoInfo video={firstVideoItem} />
     </>
   );
 };

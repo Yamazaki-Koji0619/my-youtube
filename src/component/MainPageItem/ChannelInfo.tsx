@@ -1,7 +1,9 @@
 import React, { FC } from 'react';
-import { ChannelInfoType } from '../types/MainType';
+import { ChannelInfoPropsType } from '../types/MainType';
 
-const ChannelInfo: FC<ChannelInfoType> = (props) => {
+const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
+
+    console.log(props);
 
     // const channelImage = props.snippet.thumbnails.AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag.url;
     // const channelTitle = props.snippet.title;
