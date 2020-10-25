@@ -1,18 +1,32 @@
 import React, { FC } from 'react';
 import { ChannelInfoPropsType } from '../types/MainType';
+import  "./../../assets/MainPage.css";
 
 const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
 
     console.log(props);
+    console.log(props.channel[0]);
 
-    // const channelImage = props.snippet.thumbnails.AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag.url;
-    // const channelTitle = props.snippet.title;
-    // const channelRegistration = props.statistics.subscriberCount;
-    // const channelStartTime = props.snippet.publishedAt;
-    // const channelViewCoumt = props.statistics.viewCount;
+    const ChannelInfoProps = props.channel;
 
     return(
-        <div>ChannelInfo</div>
+        <div className="channel_info">
+            {ChannelInfoProps.map((item, index) => (
+                <div key={index} className="channel_info">
+                    <div>
+                        <img src={item.snippet.thumbnails.medium.url} alt=""/>
+                    </div>
+                    <div>
+                        <h3>{item.snippet.title}</h3>
+                        <div className="channel_info_item">
+                            <p>{item.statistics.subscriberCount}</p>
+                            <p>{item.statistics.videoCount}</p>
+                            <p>{item.snippet.publishedAt.slice(0,4)}{item.snippet.publishedAt.slice(5,7)}{item.snippet.publishedAt.slice(8,10)}</p>
+                        </div>
+                    </div>
+                </div>
+            ))}
+        </div>
     )
 };
 

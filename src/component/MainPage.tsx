@@ -3,13 +3,14 @@ import { useDispatch, useSelector } from 'react-redux';
 import { randomIdDataType, ChannelInfoType, VideoInfoType } from './types/MainType';
 import ChannelInfo from './MainPageItem/ChannelInfo';
 import VideoInfo from './MainPageItem/VideoInfo';
+import '../assets/MainPage.css';
 
 import { RootState } from '../store';
 import { decrementAction, incrementAction, resetAction } from '../store/counter/actions';
 
-const Counter: React.FC = () => {
+const MainPage: React.FC = () => {
 
-  const [firstChanelItem, setFirstChanelItem] = useState<ChannelInfoType>([]);
+  const [firstChannelItem, setFirstChannelItem] = useState<ChannelInfoType>([]);
   const [secondChannelItem, setSecondChannelItem] = useState<ChannelInfoType>([]);
   const [thirdChannelItem, setThirdChannelItem] = useState<ChannelInfoType>([]);
 
@@ -45,55 +46,48 @@ const Counter: React.FC = () => {
         `https://www.googleapis.com/youtube/v3/search?key=AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag&part=id,snippet&channelId=${list[2]}&maxResults=3&order=date`
     ];
 
-    //youtubeAPIから情報を取得する
-    const ChannelData = async() => {
-        await fetch(youtube_data).then(res => res.json()).then(result => {
-            firstChanelItem.push(result.items[0]);
-            secondChannelItem.push(result.items[1]);
-            thirdChannelItem.push(result.items[2]);
-        });
-    }
-    
-    ChannelData();
-    
-    //youtubeAPIから動画の情報を取得する
-    const item01: VideoInfoType = [];
-    const item02: VideoInfoType = [];
-    const item03: VideoInfoType = [];
-    const VideoData = async() => {
-        await youtube_video.map(url => {
+    const VideoInfoMap = (firstChannelItem: ChannelInfoType, secondChannelItem: ChannelInfoType, thirdChannelItem: ChannelInfoType ) => {
+        youtube_video.map(url => {
             fetch(url).then(res => res.json()).then(result => {
-                //ChannelAPIとSearchAPIの情報が一致しているものをまとめる
-                result.items.map((item: any) => {
-                    if(firstChanelItem[0].snippet.title === item.snippet.channelTitle){
-                        item01.push(item);
-                        // setFirstVideoItem(item01);
-                    }else if(secondChannelItem[0].snippet.title === item.snippet.channelTitle){
-                        item02.push(item);
-                        // setSecondVideoItem(item02);
-                    }else if(thirdChannelItem[0].snippet.title === item.snippet.channelTitle){
-                        item03.push(item);
-                        // setThirdVideoItem(item03);
+                if(firstChannelItem !== undefined && secondChannelItem !== undefined && thirdChannelItem !== undefined){
+                    console.log(firstChannelItem);
+                    console.log(secondChannelItem);
+                    console.log(thirdChannelItem);
+                    if(result.items[0].snippet.channelTitle === firstChannelItem[0].snippet.title){
+                        setFirstVideoItem(result.items);
+                    }else if(result.items[0].snippet.channelTitle === secondChannelItem[0].snippet.title){
+                        setSecondVideoItem(result.items);
+                    }else if(result.items[0].snippet.channelTitle === thirdChannelItem[0].snippet.title){
+                        setThirdVideoItem(result.items);
                     }
-                })
+                }
             })
         })
-        setFirstVideoItem(item01);
-        setSecondVideoItem(item02);
-        setThirdVideoItem(item03);
     }
 
-    VideoData();
+    const ChannelVideoData = async() => {
+        //youtubeAPIから情報を取得する
+        await fetch(youtube_data).then(res => res.json()).then(result => {
+            const item01 = [result.items[0]];
+            const item02 = [result.items[1]];
+            const item03 = [result.items[2]];
+            setFirstChannelItem(item01);
+            setSecondChannelItem(item02);
+            setThirdChannelItem(item03);
+            VideoInfoMap(item01, item02, item03);
+        });
 
+    }
+
+    ChannelVideoData();
   },[]);
 
-//   console.log(firstChanelItem);
-//   console.log(secondChannelItem);
-//   console.log(thirdChannelItem);
-//   console.log(firstVideoItem);
-//   console.log(secondVideoItem);
-//   console.log(thirdVideoItem);
-
+  console.log(firstChannelItem);
+  console.log(secondChannelItem);
+  console.log(thirdChannelItem);
+  console.log(firstVideoItem);
+  console.log(secondVideoItem);
+  console.log(thirdVideoItem);
 
   const currentCount = useSelector((state: RootState) => state.counter);
   const dispatch = useDispatch();
@@ -102,15 +96,19 @@ const Counter: React.FC = () => {
   const handleDecrement = () => dispatch(decrementAction());
   const handleReset = () => dispatch(resetAction());
   return (
-    <>
+    <div className="main_page">
       <div>{currentCount.value}</div>
       <button onClick={handleIncrement}>Up</button>
       <button onClick={handleDecrement}>Down</button>
       <button onClick={handleReset}>Reset</button>
-      <ChannelInfo channel={firstChanelItem} />
+      <ChannelInfo channel={firstChannelItem} />
       <VideoInfo video={firstVideoItem} />
-    </>
+      {/* <ChannelInfo channel={secondChannelItem} />
+      <VideoInfo video={secondVideoItem} />
+      <ChannelInfo channel={thirdChannelItem} />
+      <VideoInfo video={thirdVideoItem} /> */}
+    </div>
   );
 };
 
-export default Counter;
+export default MainPage;

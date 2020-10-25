@@ -1,0 +1,22 @@
+h3{
+    margin: 0;
+};
+
+.main_page{
+    max-width: 1024px;
+    margin: 0 auto;
+};
+
+.channel_info{
+    display: flex;
+    margin-right: 20px;
+};
+
+.channel_info_item{
+    display: flex;
+};
+
+.channel_info > img{
+    border-radius: 50%;
+    overflow: hidden;
+};

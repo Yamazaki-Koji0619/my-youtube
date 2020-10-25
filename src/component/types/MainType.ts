@@ -16,10 +16,25 @@ export type ChannelInfoType = {
         customUrl?: string;
         publishedAt: string;
         thumbnails: {
-            AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag: {
-                url: string;
-                width: number;
-                height: number
+            // AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag: {
+            //     url: string;
+            //     width: number;
+            //     height: number
+            // }
+            default:{
+              height: number;
+              url: string;
+              width: number;
+            },
+            high:{
+              height: number;
+              url: string;
+              width: number;
+            },
+            medium:{
+              height: number;
+              url: string;
+              width: number;
             }
         }
         localized?: {
@@ -50,10 +65,25 @@ export type VideoInfoType = {
       title: string;
       description: string;
       thumbnails: {
-        AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag: {
+        // AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag: {
+        //   url: string;
+        //   width: number;
+        //   height: number;
+        // },
+        default:{
+          height: number;
           url: string;
           width: number;
+        },
+        high:{
           height: number;
+          url: string;
+          width: number;
+        },
+        medium:{
+          height: number;
+          url: string;
+          width: number;
         }
       },
       channelTitle: string;
