@@ -1,6 +1,6 @@
 import React, { FC } from 'react';
 import { ChannelInfoPropsType } from '../types/MainType';
-import  "./../../assets/MainPage.css";
+import * as styles from "../../assets/MainPage.css";
 
 const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
 
@@ -10,15 +10,15 @@ const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
     const ChannelInfoProps = props.channel;
 
     return(
-        <div className="channel_info">
+        <div>
             {ChannelInfoProps.map((item, index) => (
-                <div key={index} className="channel_info">
+                <div key={index} className={ styles.channel_info }>
                     <div>
                         <img src={item.snippet.thumbnails.medium.url} alt=""/>
                     </div>
                     <div>
                         <h3>{item.snippet.title}</h3>
-                        <div className="channel_info_item">
+                        <div className={ styles.channel_info_item }>
                             <p>{item.statistics.subscriberCount}</p>
                             <p>{item.statistics.videoCount}</p>
                             <p>{item.snippet.publishedAt.slice(0,4)}{item.snippet.publishedAt.slice(5,7)}{item.snippet.publishedAt.slice(8,10)}</p>
