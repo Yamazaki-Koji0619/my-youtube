@@ -97,16 +97,16 @@ const MainPage: React.FC = () => {
   const handleReset = () => dispatch(resetAction());
   return (
     <MainStyle>
-      <div>{currentCount.value}</div>
+      {/* <div>{currentCount.value}</div>
       <button onClick={handleIncrement}>Up</button>
       <button onClick={handleDecrement}>Down</button>
-      <button onClick={handleReset}>Reset</button>
+      <button onClick={handleReset}>Reset</button> */}
       <ChannelInfo channel={firstChannelItem} />
       <VideoInfo video={firstVideoItem} />
-      {/* <ChannelInfo channel={secondChannelItem} />
+      <ChannelInfo channel={secondChannelItem} />
       <VideoInfo video={secondVideoItem} />
       <ChannelInfo channel={thirdChannelItem} />
-      <VideoInfo video={thirdVideoItem} /> */}
+      <VideoInfo video={thirdVideoItem} />
     </MainStyle>
   );
 };

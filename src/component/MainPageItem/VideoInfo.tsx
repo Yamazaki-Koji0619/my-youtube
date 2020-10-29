@@ -1,5 +1,6 @@
 import React, { FC } from 'react';
 import { VideoInfoPropsType } from '../types/MainType';
+import { MainTopBottom, VideoInfoStyle, VideoInfoItemStyle, VideoInfoImage } from '../../styles/MainPage';
 
 const VideoInfo: FC<VideoInfoPropsType> = (props) => {
 
@@ -9,15 +10,16 @@ const VideoInfo: FC<VideoInfoPropsType> = (props) => {
     const VideoInfoProps = props.video;
 
     return(
-        <div>
-            <div>VideoInfo</div>
-            {VideoInfoProps.map((item, index) => (
-                <div key={index}>
-                    <img src={item.snippet.thumbnails.high.url} alt=""/>
-                    <div>{item.snippet.title}</div>
-                </div>
-            ))}
-        </div>
+        <MainTopBottom>
+            <VideoInfoStyle>
+                {VideoInfoProps.map((item, index) => (
+                    <VideoInfoItemStyle key={index}>
+                        <VideoInfoImage src={item.snippet.thumbnails.high.url} alt=""/>
+                        <div>{item.snippet.title}</div>
+                    </VideoInfoItemStyle>
+                ))}
+            </VideoInfoStyle>
+        </MainTopBottom>
     )
 };
 
