@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { randomIdDataType, ChannelInfoType, VideoInfoType } from './types/MainType';
 import ChannelInfo from './MainPageItem/ChannelInfo';
 import VideoInfo from './MainPageItem/VideoInfo';
-import '../assets/MainPage.css';
+import { MainStyle } from '../styles/MainPage';
 
 import { RootState } from '../store';
 import { decrementAction, incrementAction, resetAction } from '../store/counter/actions';
@@ -96,7 +96,7 @@ const MainPage: React.FC = () => {
   const handleDecrement = () => dispatch(decrementAction());
   const handleReset = () => dispatch(resetAction());
   return (
-    <div className="main_page">
+    <MainStyle>
       <div>{currentCount.value}</div>
       <button onClick={handleIncrement}>Up</button>
       <button onClick={handleDecrement}>Down</button>
@@ -107,7 +107,7 @@ const MainPage: React.FC = () => {
       <VideoInfo video={secondVideoItem} />
       <ChannelInfo channel={thirdChannelItem} />
       <VideoInfo video={thirdVideoItem} /> */}
-    </div>
+    </MainStyle>
   );
 };
 

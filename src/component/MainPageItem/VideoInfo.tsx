@@ -1,6 +1,5 @@
 import React, { FC } from 'react';
 import { VideoInfoPropsType } from '../types/MainType';
-import  "./../../assets/MainPage.css";
 
 const VideoInfo: FC<VideoInfoPropsType> = (props) => {
 

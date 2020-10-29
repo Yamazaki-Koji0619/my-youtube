@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Header from './component/Header';
 import Router from './Router';
-import  "./assets/style.css";
+import  "./styles/style.css";
 
 /* react-reduxのProviderでラッピングしたコンポーネントをレンダリング */
 class App extends React.Component {

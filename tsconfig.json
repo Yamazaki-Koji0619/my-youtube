@@ -20,9 +20,10 @@
     "experimentalDecorators": true,
     "jsx": "react",
     "typeRoots": [
-      "typings",
+      "types",
       "node_modules/@types"
-    ]
+    ],
+    "baseUrl": "./",
   },
   "include": [
     "src"

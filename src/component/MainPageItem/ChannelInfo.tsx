@@ -1,8 +1,12 @@
 import React, { FC } from 'react';
 import { ChannelInfoPropsType } from '../types/MainType';
-import * as styles from "../../assets/MainPage.css";
+import styled from "styled-components";
+import { ChannelInfoStyle, ChannelInfoImage, ChannelInfoItemStyle } from '../../styles/MainPage';
+// import {} from 'styled-components/cssprop';
 
 const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
+    const Test = styled.div`color: red;`;
+
 
     console.log(props);
     console.log(props.channel[0]);
@@ -11,20 +15,21 @@ const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
 
     return(
         <div>
+            <Test>Test div</Test>
             {ChannelInfoProps.map((item, index) => (
-                <div key={index} className={ styles.channel_info }>
+                <ChannelInfoStyle key={index}>
                     <div>
-                        <img src={item.snippet.thumbnails.medium.url} alt=""/>
+                        <ChannelInfoImage src={item.snippet.thumbnails.medium.url} alt=""/>
                     </div>
                     <div>
                         <h3>{item.snippet.title}</h3>
-                        <div className={ styles.channel_info_item }>
+                        <ChannelInfoItemStyle>
                             <p>{item.statistics.subscriberCount}</p>
                             <p>{item.statistics.videoCount}</p>
                             <p>{item.snippet.publishedAt.slice(0,4)}{item.snippet.publishedAt.slice(5,7)}{item.snippet.publishedAt.slice(8,10)}</p>
-                        </div>
+                        </ChannelInfoItemStyle>
                     </div>
-                </div>
+                </ChannelInfoStyle>
             ))}
         </div>
     )
