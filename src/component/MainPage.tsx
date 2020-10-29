@@ -50,9 +50,6 @@ const MainPage: React.FC = () => {
         youtube_video.map(url => {
             fetch(url).then(res => res.json()).then(result => {
                 if(firstChannelItem !== undefined && secondChannelItem !== undefined && thirdChannelItem !== undefined){
-                    console.log(firstChannelItem);
-                    console.log(secondChannelItem);
-                    console.log(thirdChannelItem);
                     if(result.items[0].snippet.channelTitle === firstChannelItem[0].snippet.title){
                         setFirstVideoItem(result.items);
                     }else if(result.items[0].snippet.channelTitle === secondChannelItem[0].snippet.title){

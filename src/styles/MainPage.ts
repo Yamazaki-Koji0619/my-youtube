@@ -49,3 +49,24 @@ export const VideoInfoImage = styled.img`
     width: 100%;
 `;
 //VideoInfo.tsx
+
+//WatchItem.tsx
+export const BackBlack = styled.div`
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background-color: rgba(0,0,0,0.4);
+    z-index: 999999;
+`
+
+export const VideoFrame = styled.iframe`
+    width: 950px;
+    height: 534px;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+`
+//WatchItem.tsx

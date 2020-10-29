@@ -6,7 +6,6 @@ import { MainBottom, ChannelInfoStyle, ChannelInfoImage, ChannelInfoItemStyle } 
 const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
 
     console.log(props);
-    console.log(props.channel[0]);
 
     const ChannelInfoProps = props.channel;
 

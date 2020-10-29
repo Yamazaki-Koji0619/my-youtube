@@ -94,12 +94,19 @@ export type VideoInfoType = {
 
 export type ChannelInfoPropsType = {
     channel: ChannelInfoType;
-}
+};
 
 export type VideoInfoPropsType = {
     video: VideoInfoType;
-}
+};
 
 // MainPage.tsx ChannelInfo.tsx VideoInfo.tsx
 
 export type test = any;
+
+// WatchItem.tsx
+export type WatchItemProps = {
+    anchor: boolean;
+    VideoImageClick: (id: string) => void;
+    videoId: string;
+};
