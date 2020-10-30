@@ -1,6 +1,7 @@
 import { combineReducers, createStore, applyMiddleware } from 'redux';
 import { connectRouter, routerMiddleware } from 'connected-react-router';
 import { countReducer } from './counter/reducer';
+import { channelReducer } from './channel/reducer';
 import * as History from 'history'; 
 import thunk from 'redux-thunk';
 
@@ -14,6 +15,7 @@ const history = History.createBrowserHistory();
 const rootReducer = combineReducers({
   router: connectRouter(history),
   counter: countReducer,
+  channel: channelReducer,
 });
 
 const rootRouter = applyMiddleware(
