@@ -52,14 +52,14 @@ export const VideoInfoImage = styled.img`
 
 //WatchItem.tsx
 export const BackBlack = styled.div`
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100%;
+    height: 100%;
     background-color: rgba(0,0,0,0.4);
     z-index: 999999;
-`
+`;
 
 export const VideoFrame = styled.iframe`
     width: 950px;
