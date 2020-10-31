@@ -1,22 +1,33 @@
-import React, { FC, useState } from 'react';
+import React, { FC } from 'react';
+import { useSelector } from 'react-redux';
 import { ChannelInfoPropsType } from '../types/MainType';
 import { useDispatch } from 'react-redux';
 import { push } from 'connected-react-router';
 import { channelInfoAction } from '../../store/channel/actions';
 import { MainText, SubText } from '../../styles/index';
 import { MainBottom, ChannelInfoStyle, ChannelInfoImage, ChannelInfoItemStyle } from '../../styles/MainPage';
+import { RootState } from '../../store';
+// import { channelInfoClick } from '../../store/channel/operation';
+
 
 const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
 
     const dispatch = useDispatch();
+    const channelName = useSelector((state: RootState) => state.channel);
 
     const ChannelInfoProps = props.channel;
 
     const ChannelClick = (channel: string) => {
         console.log(channel);
-        channelInfoAction(channel);
+        console.log(channelName);
         dispatch(push('/channel'));
+        dispatch(channelInfoAction(channel));
+        console.log(channelName);
+        // channelInfoClick(channel);
+        console.log(channelName);
     };
+
+//   const handleIncrement = () => dispatch(incrementAction());
 
     return(
         <MainBottom>

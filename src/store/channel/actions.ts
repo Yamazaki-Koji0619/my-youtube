@@ -1,11 +1,13 @@
 import { ActionTypes } from "../actionTypes";
+import { ChannelInfoTypes } from './types';
 // import { CounterActionTypes } from "./types";
 
 // *
 // * action creators
 // *
 
-export const channelInfoAction = (channel: string) => {
+export const channelInfoAction = (channel: string): ChannelInfoTypes => {
+    console.log(channel);
     return {
         type: ActionTypes.sendChannel,
         payload: channel,
