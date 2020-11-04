@@ -1,4 +1,4 @@
-import React, { FC } from 'react';
+import React, { FC, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ChannelInfoPropsType } from '../types/MainType';
 import { useDispatch } from 'react-redux';
@@ -14,6 +14,7 @@ const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
 
     const dispatch = useDispatch();
     const channelName = useSelector((state: RootState) => state.channel);
+    const [test, setTest] = useState<string>('');
 
     const ChannelInfoProps = props.channel;
 
@@ -21,7 +22,9 @@ const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
         console.log(channel);
         console.log(channelName);
         dispatch(push('/channel'));
+        setTest(channel);
         dispatch(channelInfoAction(channel));
+        console.log(test);
         console.log(channelName);
         // channelInfoClick(channel);
         console.log(channelName);
