@@ -19,8 +19,11 @@ const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
     const ChannelInfoProps = props.channel;
 
     const ChannelClick = (channel: string) => {
-        // console.log(channel);
-        // console.log(channelName);
+        console.log(channel);
+        console.log(channelName);
+        console.log(test);
+        setTest(channel);
+        console.log(test);
         dispatch(push('/channel'));
         dispatch(channelInfoAction(channel));
         // console.log(channelName);
