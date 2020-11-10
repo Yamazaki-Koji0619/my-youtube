@@ -35,7 +35,7 @@ export const channelReducer = (state = initialState, action: ChannelInfoTypes): 
             console.log(state);
             console.log(action.payload);
             return {
-                ...state,
+            //     ...state,
                 channel: action.payload,
             }
         default:
