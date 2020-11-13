@@ -28,9 +28,9 @@ const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
         dispatch(channelInfoAction(channel));
     };
 
-    const func = () => {
-        dispatch(push('/channel'));
-    };
+    // const func = () => {
+    //     dispatch(push('/channel'));
+    // };
 
 //   const handleIncrement = () => dispatch(incrementAction());
 
