@@ -11,7 +11,10 @@ const ChannelPage: React.FC = () => {
     console.log(channelName);
 
     return(
-        <div>ChannelPage</div>
+        <div>
+            <p>ChannelPage</p>
+            <p>{channelName.channel}</p>
+        </div>
     )
 };
 

@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 // MainPage.tsx
 export const MainStyle = styled.div`
@@ -13,7 +14,9 @@ export const MainBottom = styled.div`
     border-bottom: 1px solid black;
 `
 
-export const ChannelInfoStyle = styled.div`
+export const ChannelInfoStyle = styled(Link)`
+    color: black;
+    text-decoration: none;
     display: flex;
     align-items: center;
 `;
