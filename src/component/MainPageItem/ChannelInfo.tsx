@@ -1,27 +1,20 @@
-import React, { FC, useState } from 'react';
-import { useSelector } from 'react-redux';
+import React, { FC } from 'react';
 import { ChannelInfoPropsType } from '../types/MainType';
 import { useDispatch } from 'react-redux';
 import { channelInfoAction } from '../../store/channel/actions';
 import { MainText, SubText } from '../../styles/index';
 import { MainBottom, ChannelInfoStyle, ChannelInfoImage, ChannelInfoItemStyle } from '../../styles/MainPage';
-import { RootState } from '../../store';
 
 const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
 
     const dispatch = useDispatch();
-    const channelName = useSelector((state: RootState) => state.channel);
 
     const ChannelInfoProps = props.channel;
-
-    const ChannelClick = (channel: string) => {
-        dispatch(channelInfoAction(channel));
-    };
 
     return(
         <MainBottom>
             {ChannelInfoProps.map((item, index) => (
-                <ChannelInfoStyle to="/channel" key={index} onClick={() => ChannelClick(item.snippet.title)}>
+                <ChannelInfoStyle to="/channel" key={index} onClick={() => dispatch(channelInfoAction(item.snippet.title))}>
                     <div>
                         <ChannelInfoImage src={item.snippet.thumbnails.medium.url} alt=""/>
                     </div>
