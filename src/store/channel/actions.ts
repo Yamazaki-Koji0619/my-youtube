@@ -14,6 +14,14 @@ export const channelInfoAction = (channel: string): ChannelInfoTypes => {
     };
 };
 
+export const channelDataItem = (channelData: object): ChannelInfoTypes => {
+    console.log(channelData);
+    return {
+        type: ActionTypes.sendChannelData,
+        payload: channelData
+    }
+}
+
 // export const incrementAction = (): CounterActionTypes => {
 //   return {
 //     type: ActionTypes.increment, // "INCREMENT"

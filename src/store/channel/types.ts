@@ -13,14 +13,21 @@ import { ActionTypes } from "../actionTypes";
 
 export type Channel = {
     channel: string;
+    channelData: object;
 };
+
 
 interface SendChannelAction extends Action {
     type: typeof ActionTypes.sendChannel;
     payload: string;
 }
 
-export type ChannelInfoTypes = SendChannelAction;
+interface SendChannelDataAction extends Action {
+    type: typeof ActionTypes.sendChannelData;
+    payload: object;
+}
+
+export type ChannelInfoTypes = SendChannelAction | SendChannelDataAction;
 
 // // Actionの型 Actionを継承
 // interface IncrementAction extends Action {

@@ -27,16 +27,20 @@ import { Channel, ChannelInfoTypes } from "./types";
 
 const initialState: Channel = {
     channel: "",
+    channelData: {},
 };
 
 export const channelReducer = (state = initialState, action: ChannelInfoTypes): Channel => {
     switch (action.type) {
         case ActionTypes.sendChannel:
-            console.log(state);
-            console.log(action.payload);
             return {
                 ...state,
                 channel: action.payload,
+            }
+        case ActionTypes.sendChannelData:
+            return {
+                ...state,
+                channelData: action.payload,
             }
         default:
             return state;

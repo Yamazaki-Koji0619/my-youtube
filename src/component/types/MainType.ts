@@ -8,7 +8,7 @@ export type randomIdDataType = {
 export type ChannelInfoType = {
     kind: string;
     etag: string;
-    id: string | object;
+    id: string;
     snippet: { 
         country?: string;
         title: string;
@@ -16,11 +16,6 @@ export type ChannelInfoType = {
         customUrl?: string;
         publishedAt: string;
         thumbnails: {
-            // AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag: {
-            //     url: string;
-            //     width: number;
-            //     height: number
-            // }
             default:{
               height: number;
               url: string;
@@ -94,6 +89,47 @@ export type VideoInfoType = {
 
 export type ChannelInfoPropsType = {
     channel: ChannelInfoType;
+};
+
+export type ChannelInfoReduxSetType = {
+  kind: string;
+  etag: string;
+  id: string;
+  snippet: { 
+      country?: string;
+      title: string;
+      description: string;
+      customUrl?: string;
+      publishedAt: string;
+      thumbnails: {
+          default:{
+            height: number;
+            url: string;
+            width: number;
+          },
+          high:{
+            height: number;
+            url: string;
+            width: number;
+          },
+          medium:{
+            height: number;
+            url: string;
+            width: number;
+          }
+      }
+      localized?: {
+          description: string;
+          title: string;
+      }
+  };
+  statistics: {
+      viewCount: number;
+      subscriberCount: number;  // this value is rounded to three significant figures
+      hiddenSubscriberCount: boolean;
+      videoCount: number;
+      commentCount: number;
+  }
 };
 
 export type VideoInfoPropsType = {

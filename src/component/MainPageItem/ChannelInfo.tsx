@@ -1,7 +1,7 @@
 import React, { FC } from 'react';
-import { ChannelInfoPropsType } from '../types/MainType';
+import { ChannelInfoReduxSetType, ChannelInfoPropsType } from '../types/MainType';
 import { useDispatch } from 'react-redux';
-import { channelInfoAction } from '../../store/channel/actions';
+import { channelInfoAction, channelDataItem } from '../../store/channel/actions';
 import { MainText, SubText } from '../../styles/index';
 import { MainBottom, ChannelInfoStyle, ChannelInfoImage, ChannelInfoItemStyle } from '../../styles/MainPage';
 
@@ -11,10 +11,28 @@ const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
 
     const ChannelInfoProps = props.channel;
 
+    const ChannelInfoClick = (channelActionItem: ChannelInfoReduxSetType) => {
+        //チャンネルのIDを渡し、ChannelPageでAPI処理に使う
+        dispatch(channelInfoAction(channelActionItem.id))
+
+        const passChannelItem: object = {
+            title: channelActionItem.snippet.title,
+            image: channelActionItem.snippet.thumbnails.medium.url,
+            startTime: channelActionItem.snippet.publishedAt,
+            count: channelActionItem.statistics.viewCount,
+            registration: channelActionItem.statistics.subscriberCount
+        };
+
+        //チャンネルの基本的な情報を渡し、ChannelPageでそのまま表示させる
+        dispatch(channelDataItem(passChannelItem))
+    }
+
+    console.log(props);
+
     return(
         <MainBottom>
             {ChannelInfoProps.map((item, index) => (
-                <ChannelInfoStyle to="/channel" key={index} onClick={() => dispatch(channelInfoAction(item.snippet.title))}>
+                <ChannelInfoStyle to="/channel" key={index} onClick={() => ChannelInfoClick(item)}>
                     <div>
                         <ChannelInfoImage src={item.snippet.thumbnails.medium.url} alt=""/>
                     </div>
