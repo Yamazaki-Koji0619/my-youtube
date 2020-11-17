@@ -7,7 +7,7 @@ import { RootState } from '../store';
 const ChannelPage: React.FC = () => {
 
     const dispatch = useDispatch();
-    const channelName = useSelector((state: RootState) => state.channel);
+    const channelName = useSelector((state: RootState) => state.channel.channel);
     const channelData = useSelector((state: RootState) => state.channel.channelData);
     //取ってきた情報を配列でまとめ、表示する
     const [channelVideoList, setChannelVideoList] = useState<object[]>([]);
