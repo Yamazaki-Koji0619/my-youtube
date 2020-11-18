@@ -39,5 +39,12 @@ export const ChannelText = styled.p`
     padding-left: 20px;
 `;
 
+export const Description = styled.div`
+    width: 600px;
+    height: auto;
+    padding: 10px;
+    white-space: pre-wrap;
+`;
+
 
 //ClickChannelInfo.tsx
