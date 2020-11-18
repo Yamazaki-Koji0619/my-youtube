@@ -79,12 +79,12 @@ const MainPage: React.FC = () => {
     ChannelVideoData();
   },[]);
 
-  console.log(firstChannelItem);
-  console.log(secondChannelItem);
-  console.log(thirdChannelItem);
-  console.log(firstVideoItem);
-  console.log(secondVideoItem);
-  console.log(thirdVideoItem);
+//   console.log(firstChannelItem);
+//   console.log(secondChannelItem);
+//   console.log(thirdChannelItem);
+//   console.log(firstVideoItem);
+//   console.log(secondVideoItem);
+//   console.log(thirdVideoItem);
 
   const currentCount = useSelector((state: RootState) => state.counter);
   const dispatch = useDispatch();

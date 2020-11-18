@@ -8,3 +8,7 @@ export type ChannelDataType = {
     registration: number;
     description: string;
 };
+
+export type ChannelDataPropsType = {
+    channelItem: ChannelDataType;
+};

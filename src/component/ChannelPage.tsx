@@ -1,8 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { ChannelNameType, ChannelDataType } from './types/ChannelType';
-
+//ストアから情報取得
 import { RootState } from '../store';
+//タイプをまとめてインポート
+import { ChannelNameType, ChannelDataType } from './types/ChannelType';
+//スタイルをまとめてインポート
+import { DisplayFlex, LeftWidth, RightWidth } from '../styles/ChannelPage';
+//
+import ClickChannelInfo from '../component/ChannelPageItem/ClickChannelInfo';
 
 const ChannelPage: React.FC = () => {
 
@@ -36,11 +41,14 @@ const ChannelPage: React.FC = () => {
     console.log(channelVideoList);
 
     return(
-        <>
-            <div>
-                {channelData}
-            </div>
-        </>
+        <DisplayFlex>
+            <LeftWidth>
+                <ClickChannelInfo channelItem={channelData} />
+            </LeftWidth>
+            <RightWidth>
+                こんにちは
+            </RightWidth>
+        </DisplayFlex>
     )
 };
 
