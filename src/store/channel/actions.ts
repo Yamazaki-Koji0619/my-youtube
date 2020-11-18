@@ -1,5 +1,6 @@
 import { ActionTypes } from "../actionTypes";
 import { ChannelInfoTypes } from './types';
+import { ChannelDataType } from '../../component/types/ChannelType';
 // import { CounterActionTypes } from "./types";
 
 // *
@@ -14,7 +15,7 @@ export const channelInfoAction = (channel: string): ChannelInfoTypes => {
     };
 };
 
-export const channelDataItem = (channelData: object): ChannelInfoTypes => {
+export const channelDataItem = (channelData: ChannelDataType): ChannelInfoTypes => {
     console.log(channelData);
     return {
         type: ActionTypes.sendChannelData,

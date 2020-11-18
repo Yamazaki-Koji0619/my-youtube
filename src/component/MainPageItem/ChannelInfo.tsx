@@ -4,6 +4,7 @@ import { useDispatch } from 'react-redux';
 import { channelInfoAction, channelDataItem } from '../../store/channel/actions';
 import { MainText, SubText } from '../../styles/index';
 import { MainBottom, ChannelInfoStyle, ChannelInfoImage, ChannelInfoItemStyle } from '../../styles/MainPage';
+import { ChannelDataType } from '../types/ChannelType';
 
 const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
 
@@ -15,12 +16,13 @@ const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
         //チャンネルのIDを渡し、ChannelPageでAPI処理に使う
         dispatch(channelInfoAction(channelActionItem.id))
 
-        const passChannelItem: object = {
+        const passChannelItem: ChannelDataType = {
             title: channelActionItem.snippet.title,
-            image: channelActionItem.snippet.thumbnails.medium.url,
+            image: channelActionItem.snippet.thumbnails.high.url,
             startTime: channelActionItem.snippet.publishedAt,
             count: channelActionItem.statistics.viewCount,
-            registration: channelActionItem.statistics.subscriberCount
+            registration: channelActionItem.statistics.subscriberCount,
+            description: channelActionItem.snippet.description
         };
 
         //チャンネルの基本的な情報を渡し、ChannelPageでそのまま表示させる

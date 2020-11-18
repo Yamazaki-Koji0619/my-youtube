@@ -1,14 +1,14 @@
 import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import ChannelInfo from './MainPageItem/ChannelInfo';
+import { ChannelNameType, ChannelDataType } from './types/ChannelType';
 
 import { RootState } from '../store';
 
 const ChannelPage: React.FC = () => {
 
     const dispatch = useDispatch();
-    const channelName = useSelector((state: RootState) => state.channel.channel);
-    const channelData = useSelector((state: RootState) => state.channel.channelData);
+    const channelName: ChannelNameType = useSelector((state: RootState) => state.channel.channel);
+    const channelData: ChannelDataType = useSelector((state: RootState) => state.channel.channelData);
     //取ってきた情報を配列でまとめ、表示する
     const [channelVideoList, setChannelVideoList] = useState<object[]>([]);
 
@@ -37,9 +37,9 @@ const ChannelPage: React.FC = () => {
 
     return(
         <>
-            {/* {channelVideoList.map(list => (
-                <ChannelInfo />
-            ))} */}
+            <div>
+                {channelData}
+            </div>
         </>
     )
 };

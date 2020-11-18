@@ -27,7 +27,14 @@ import { Channel, ChannelInfoTypes } from "./types";
 
 const initialState: Channel = {
     channel: "",
-    channelData: {},
+    channelData: {
+        title: "",
+        image: "",
+        startTime: "",
+        count: 0,
+        registration: 0,
+        description: ""
+    },
 };
 
 export const channelReducer = (state = initialState, action: ChannelInfoTypes): Channel => {

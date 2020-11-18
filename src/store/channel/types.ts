@@ -1,6 +1,6 @@
 import { Action } from "redux";
-
 import { ActionTypes } from "../actionTypes";
+import { ChannelDataType } from '../../component/types/ChannelType';
 
 // *
 // * type of Actions
@@ -13,7 +13,7 @@ import { ActionTypes } from "../actionTypes";
 
 export type Channel = {
     channel: string;
-    channelData: object;
+    channelData: ChannelDataType;
 };
 
 
@@ -24,7 +24,7 @@ interface SendChannelAction extends Action {
 
 interface SendChannelDataAction extends Action {
     type: typeof ActionTypes.sendChannelData;
-    payload: object;
+    payload: ChannelDataType;
 }
 
 export type ChannelInfoTypes = SendChannelAction | SendChannelDataAction;

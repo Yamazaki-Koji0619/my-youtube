@@ -1,6 +1,6 @@
 import React from 'react';
 
-const ClickChannelInfo = () => {
+const ClickChannelInfo: React.FC = (props) => {
     return(
         <div>ClickChannelInfo</div>
     )
