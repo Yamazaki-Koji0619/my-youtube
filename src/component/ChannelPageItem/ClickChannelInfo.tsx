@@ -1,11 +1,10 @@
 import React, {FC, useState} from 'react';
 import { ChannelDataPropsType } from '../types/ChannelType';
-import { DisplayFlex, DisplayFlexCenter, ChannelImage, ChannelTitle, ChannelText, Description } from '../../styles/ChannelPage';
+import { DisplayFlex, DisplayFlexCenter, ChannelImage, MainTitle, SubText, Description } from '../../styles/ChannelPage';
 
 //Material-ui
 import Button from '@material-ui/core/Button';
 import Menu from '@material-ui/core/Menu';
-import MenuItem from '@material-ui/core/MenuItem';
 import { makeStyles } from '@material-ui/styles';
 
 const useStyles = makeStyles((theme) => ({
@@ -37,11 +36,11 @@ const ClickChannelInfo: FC<ChannelDataPropsType> = (props) => {
         <DisplayFlexCenter>
             <div><ChannelImage src={channelInfo.image} alt="image"/></div>
             <div>
-                <ChannelTitle>{channelInfo.title}</ChannelTitle>
+                <MainTitle>{channelInfo.title}</MainTitle>
                 <DisplayFlex>
-                    <ChannelText>登録者数：{channelInfo.registration}</ChannelText>
-                    <ChannelText>投稿動画数：{channelInfo.count}</ChannelText>
-                    <ChannelText>チャンネル開始日：{channelInfo.startTime.slice(0,4)}/{channelInfo.startTime.slice(5,7)}/{channelInfo.startTime.slice(8,10)}</ChannelText>
+                    <SubText>登録者数：{channelInfo.registration}</SubText>
+                    <SubText>投稿動画数：{channelInfo.count}</SubText>
+                    <SubText>チャンネル開始日：{channelInfo.startTime.slice(0,4)}/{channelInfo.startTime.slice(5,7)}/{channelInfo.startTime.slice(8,10)}</SubText>
                 </DisplayFlex>
                 <Button className={classes.ButtonStyle} aria-controls="simple-menu" aria-haspopup="true" onClick={handleClick}>
                     詳細をみる

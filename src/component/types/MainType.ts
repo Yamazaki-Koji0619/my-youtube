@@ -60,11 +60,6 @@ export type VideoInfoType = {
       title: string;
       description: string;
       thumbnails: {
-        // AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag: {
-        //   url: string;
-        //   width: number;
-        //   height: number;
-        // },
         default:{
           height: number;
           url: string;
