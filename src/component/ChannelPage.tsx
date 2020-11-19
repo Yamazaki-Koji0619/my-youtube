@@ -17,10 +17,7 @@ const ChannelPage: React.FC = () => {
     //取ってきた情報を配列でまとめ、表示する
     const [channelVideoList, setChannelVideoList] = useState<ChannelVideoType>([]);
 
-    //テストのURLで使う
-    const test = 'UC1uZYgOfncA-Gnk0GsLVK5A';
-    // const channel_url = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag&part=id,snippet&channelId=${channelName.channel}&maxResults=3&order=date`;
-    const channel_url = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag&part=id,snippet&channelId=${test}&maxResults=3&order=date`;
+    const channel_url = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag&part=id,snippet&channelId=${channelName}&maxResults=3&order=date`;
 
     console.log(channelName);
     console.log(channelData);
