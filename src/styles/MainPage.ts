@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 export const MainStyle = styled.div`
     max-width: 1024px;
     margin: 0 auto;
+    padding-top: 20px;
 `;
 // MainPage.tsx
 

@@ -8,6 +8,7 @@ import { ChannelNameType, ChannelDataType, ChannelVideoType, ChannelVideoSetType
 import { DisplayFlex, LeftWidth, RightWidth } from '../styles/ChannelPage';
 import ClickChannelInfo from '../component/ChannelPageItem/ClickChannelInfo';
 import ClickVideoInfo from '../component/ChannelPageItem/ClickVideoInfo';
+import SideMenu from '../component/ChannelPageItem/SideMenu';
 
 const ChannelPage: React.FC = () => {
 
@@ -17,7 +18,7 @@ const ChannelPage: React.FC = () => {
     //取ってきた情報を配列でまとめ、表示する
     const [channelVideoList, setChannelVideoList] = useState<ChannelVideoType>([]);
 
-    const channel_url = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag&part=id,snippet&channelId=${channelName}&maxResults=3&order=date`;
+    const channel_url = `https://www.googleapis.com/youtube/v3/search?key=AIzaSyA5pSnsK73ZJycRlduNL_bxjNqhud95Vag&part=id,snippet&channelId=${channelName}&maxResults=5&order=date`;
 
     console.log(channelName);
     console.log(channelData);
@@ -44,7 +45,7 @@ const ChannelPage: React.FC = () => {
                 <ClickVideoInfo videoItem={channelVideoList} />
             </LeftWidth>
             <RightWidth>
-                こんにちは
+                <SideMenu />
             </RightWidth>
         </DisplayFlex>
     )
