@@ -45,7 +45,7 @@ const ChannelPage: React.FC = () => {
                 <ClickVideoInfo videoItem={channelVideoList} />
             </LeftWidth>
             <RightWidth>
-                <SideMenu />
+                <SideMenu videoItem={channelVideoList} setChannelVideoList={setChannelVideoList} />
             </RightWidth>
         </DisplayFlex>
     )

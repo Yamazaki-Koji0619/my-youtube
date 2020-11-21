@@ -59,7 +59,7 @@ export const Description = styled.div`
 
 //ClickVideoInfo.tsx
 export const ScrollDiv = styled.div`
-    height: 78vh;
+    height: 68vh;
     overflow: scroll;
 `;
 

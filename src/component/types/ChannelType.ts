@@ -1,3 +1,5 @@
+import { Dispatch, SetStateAction } from "react";
+
 export type ChannelNameType = string;
 
 export type ChannelDataType = {
@@ -53,4 +55,5 @@ export type ChannelVideoType = ChannelVideoSetType[];
 
 export type ChannelVideoPropsType = {
     videoItem: ChannelVideoType
+    setChannelVideoList?:  Dispatch<SetStateAction<ChannelVideoType>>;
 };

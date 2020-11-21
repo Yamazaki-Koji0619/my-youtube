@@ -1,7 +1,11 @@
-import React from 'react';
+import React, { FC } from 'react';
 import { MenuWidth, MenuTitle, MenuUl, MenuList } from '../../styles/ChannelPage';
+import { ChannelVideoPropsType } from '../types/ChannelType';
 
-const SideMenu = () => {
+const SideMenu: FC<ChannelVideoPropsType> = (props) => {
+
+    const videoList = props.videoItem;
+    const setVideoList = props.setChannelVideoList;
     
     const newVideoClick = (): void => {
         console.log('new')
