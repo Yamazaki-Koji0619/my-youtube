@@ -7,7 +7,7 @@ const Router = () => {
     return (
         <Switch>
             <Route exact path={"/"} component={MainPage} />
-            <Route exact path={"/channel"} component={ChannelPage} />
+            <Route exact path={"/my-youtube/channel"} component={ChannelPage} />
         </Switch>
     );
 };
