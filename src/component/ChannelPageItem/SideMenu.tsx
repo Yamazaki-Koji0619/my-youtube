@@ -6,8 +6,16 @@ const SideMenu: FC<ChannelVideoPropsType> = (props) => {
 
     const videoList = props.videoItem;
     const setVideoList = props.setChannelVideoList;
+
+    const date = new Date();
+    const nowYear = date.getFullYear();
+    const nowMonth = date.getMonth();
+    const nowDay = date.getDay();
+
+    console.log(`${nowYear}-${nowMonth}-${nowDay}`);
     
     const newVideoClick = (): void => {
+        
         console.log('new')
     };
 
