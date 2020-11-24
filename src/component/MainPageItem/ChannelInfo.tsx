@@ -26,7 +26,7 @@ const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
         };
 
         //チャンネルの基本的な情報を渡し、ChannelPageでそのまま表示させる
-        dispatch(channelDataItem(passChannelItem))
+        dispatch(channelDataItem(passChannelItem));
     }
 
     console.log(props);
@@ -34,7 +34,7 @@ const ChannelInfo: FC<ChannelInfoPropsType> = (props) => {
     return(
         <MainBottom>
             {ChannelInfoProps.map((item, index) => (
-                <ChannelInfoStyle to="/channel" key={index} onClick={() => ChannelInfoClick(item)}>
+                <ChannelInfoStyle to="/my-youtube/channel" key={index} onClick={() => ChannelInfoClick(item)}>
                     <div>
                         <ChannelInfoImage src={item.snippet.thumbnails.medium.url} alt=""/>
                     </div>

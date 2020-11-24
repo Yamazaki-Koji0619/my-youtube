@@ -6,7 +6,7 @@ import ChannelPage from './component/ChannelPage';
 const Router = () => {
     return (
         <Switch>
-            <Route exact path={"/"} component={MainPage} />
+            <Route exact path={"/my-youtube"} component={MainPage} />
             <Route exact path={"/my-youtube/channel"} component={ChannelPage} />
         </Switch>
     );
