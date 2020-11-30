@@ -24,6 +24,7 @@ const ClickChannelInfo: FC<ChannelDataPropsType> = (props) => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
     console.log(channelInfo);
 
+    //クリックで詳細表示
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
     };
